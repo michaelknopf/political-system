@@ -3,21 +3,22 @@ package politics;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class LegislativeBody extends PoliticalEntity {
+public class LegislativeBody extends PoliticalEntity {
 
     private List<Legislator> legislators;
-    private int numberOfRepresentatives;
 
-    public void voteOnLaw() {
-
+    LegislativeBody(String name) {
+        super(name);
+        legislators = new ArrayList<>();
     }
 
-    public int getNumberOfRepresentatives() {
-        return numberOfRepresentatives;
-    }
-
-    public void setNumberOfRepresentatives(int numberOfRepresentatives) {
-        this.numberOfRepresentatives = numberOfRepresentatives;
+    public boolean voteOnBill(Bill bill) {
+        BinaryElection<Bill> binaryElection = new BinaryElection<>(
+                bill,
+                legislators.toArray(new Legislator[legislators.size()])
+        );
+        binaryElection.conductElection();
+        return binaryElection.isSuccessful();
     }
 
     public List<Legislator> getLegislators() {
@@ -32,8 +33,5 @@ public abstract class LegislativeBody extends PoliticalEntity {
         legislators.remove(legislator);
     }
 
-    LegislativeBody() {
-        legislators = new ArrayList<Legislator>();
-    }
 
 }

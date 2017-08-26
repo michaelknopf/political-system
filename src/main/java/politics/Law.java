@@ -1,16 +1,16 @@
 package politics;
 
-public class Law extends PoliticalEntity implements Ruleable {
+public class Law extends PoliticalEntity {
 
     private boolean constitutional;
 
     Law(Bill bill) {
+        super(bill.name);
         constitutional = true;
     }
 
-    @Override
-    public void rule(boolean inFavor) {
-        constitutional = inFavor;
+    public void declareUnconstitutional() {
+        constitutional = false;
     }
 
 }

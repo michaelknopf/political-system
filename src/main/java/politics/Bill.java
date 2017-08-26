@@ -1,28 +1,16 @@
 package politics;
 
-public class Bill extends PoliticalEntity implements Votable<Boolean> {
+public class Bill extends PoliticalEntity {
 
-    protected double necessaryMajority;
+    private final String[] provisions;
 
-    private int votesFor;
-    private int votesAgainst;
-
-    public Bill() {
-        this(0.5);
+    public Bill(String name, String[] provisions) {
+        super(name);
+        this.provisions = provisions;
     }
 
-    public Bill(double necessaryMajority) {
-        this.necessaryMajority = necessaryMajority;
-    }
-
-    @Override
-    public void vote(Boolean decision) {
-        votesFor++;
-        votesAgainst++;
-    }
-
-    public boolean passed() {
-        return votesFor / (votesFor + votesAgainst) > necessaryMajority;
+    public String[] getProvisions() {
+        return provisions;
     }
 
 }

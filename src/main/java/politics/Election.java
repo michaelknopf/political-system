@@ -1,14 +1,14 @@
 package politics;
 
-import java.util.Iterator;
-
 public class Election<T> {
 
     private int[] tally;
     private T[] choices;
+    private boolean tie;
+
     private Voter<T>[] voters;
 
-    public Election(T[] choices, Voter[] voters) {
+    public Election(T[] choices, Voter<T>[] voters) {
         this.choices = choices;
         this.voters = voters;
         tally = new int[choices.length];
@@ -23,23 +23,33 @@ public class Election<T> {
         }
     }
 
-    public T[] getChoices() {
-        return choices;
-    }
-
     public T getWinner() {
         T winner = null;
         int mostVotes = 0;
         for (int i = 0; i < choices.length; i++) {
             int votes = tally[i];
             if (votes > mostVotes) {
+                tie = false;
                 mostVotes = votes;
                 winner = choices[i];
             } else if (votes == mostVotes) {
+                tie = true;
                 winner = null;
             }
         }
         return winner;
+    }
+
+    public boolean isTie() {
+        return tie;
+    }
+
+    public T[] getChoices() {
+        return choices;
+    }
+
+    public Voter<T>[] getVoters() {
+        return voters;
     }
 
 }

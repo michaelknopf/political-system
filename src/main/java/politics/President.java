@@ -9,10 +9,6 @@ public class President extends ElectedOfficial {
         impeached = false;
     }
 
-    public void attack(Country country) {
-        country.attack();
-    }
-
     public void impeach() {
         impeached = true;
     }
