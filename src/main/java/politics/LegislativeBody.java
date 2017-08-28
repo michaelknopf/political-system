@@ -30,7 +30,7 @@ public class LegislativeBody extends PoliticalEntity {
      * @param bill the bill to be voted on
      * @return true if the bill passed, otherwise false
      */
-    public boolean voteOnBill(Bill bill) {
+    public Boolean voteOnBill(Bill bill) {
 
         // construct a binary election
         BinaryElection<Bill> binaryElection = new BinaryElection<>(

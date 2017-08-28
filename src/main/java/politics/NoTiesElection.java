@@ -38,7 +38,7 @@ public class NoTiesElection<T> {
         delegate.conductElection();
 
         // conduct again as long as there is a tie
-        while (getWinner() == null) {
+        while (isTie()) {
             // reconstruct delegate election
             delegate = new Election<>(delegate.getChoices(), delegate.getVoters());
             // conduct again
@@ -52,6 +52,14 @@ public class NoTiesElection<T> {
      */
     public T getWinner() {
         return delegate.getWinner();
+    }
+
+    /**
+     * Determine if the election was a tie.
+     * @return true if the election was a tie, otherwise false
+     */
+    public boolean isTie() {
+        return delegate.isTie();
     }
 
     /**

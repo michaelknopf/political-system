@@ -23,6 +23,11 @@ public class Election<T> {
     private boolean tie;
 
     /**
+     * the winner of the election
+     */
+    private T winner;
+
+    /**
      * the electorate voting in the election
      */
     private Voter<T>[] voters;
@@ -52,16 +57,16 @@ public class Election<T> {
         for (Voter<T> voter : voters) {
             tally[voter.vote(choices)]++;
         }
+        computeWinner();
     }
 
     /**
      * Determines and returns the winner of the election.
-     * @return the winning object
      */
-    public T getWinner() {
+    public void computeWinner() {
 
         // initialize winner to null
-        T winner = null;
+        winner = null;
 
         // the highest vote total that has yet been encountered
         int mostVotes = 0;
@@ -86,9 +91,9 @@ public class Election<T> {
                 // there is currently no winner
                 winner = null;
             }
+
         }
 
-        return winner;
     }
 
     /**
@@ -97,6 +102,14 @@ public class Election<T> {
      */
     public boolean isTie() {
         return tie;
+    }
+
+    /**
+     * Getter for winner
+     * @return winner
+     */
+    public T getWinner() {
+        return winner;
     }
 
     /**

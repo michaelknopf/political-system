@@ -29,17 +29,17 @@ public class TestPolitics extends TestCase {
         Bill bill = new Bill(
                 "Economic Prosperity Act",
                 new String[]{
-                        "All citizens will be given $1 every day."
+                        "All citizens will be given $1.00 each day."
                 }
         );
 
         // define expectations
-        boolean[] expected = new boolean[] { false, false, false, true, true };
+        Boolean[] expected = new Boolean[] { false, false, null, true, true };
 
         // run test 5 times
         for (int i = 0; i < 5; i++) {
             // conduct election
-            boolean result = legislativeBody.voteOnBill(bill);
+            Boolean result = legislativeBody.voteOnBill(bill);
             // check result against expectation
             assertEquals(result, expected[i]);
         }
