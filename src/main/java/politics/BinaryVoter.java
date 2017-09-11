@@ -21,7 +21,7 @@ public interface BinaryVoter<T> extends Voter<T> {
      *
      * Note: Do not override this method.  Overriding will result in unintended behavior in a BinaryElection.
      *
-     * @param choices a 2-element array, the first element being null and representing a"no" vote,
+     * @param choices a 2-element array, the first element being null and representing a "no" vote,
      *                the second being the object being voted on and representing a "yes" vote.
      * @return 1 if in favor, otherwise 0
      */
